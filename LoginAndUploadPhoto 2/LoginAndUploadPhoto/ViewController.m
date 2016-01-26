@@ -16,7 +16,10 @@
 #define  PICUPLOADURL           @"http://www.perdate.com:8002"
 #define  UploadIconPath         @"/server/icon/upload2"
 @interface ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@property (nonatomic,strong)UIButton *btn;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
+
 
 @end
 
