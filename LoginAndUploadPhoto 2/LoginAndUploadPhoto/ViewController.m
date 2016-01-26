@@ -18,7 +18,7 @@
 @interface ViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic,strong)UIButton *btn;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
-
+@property (nonatomic,retain) UILabel *label;
 
 
 @end
