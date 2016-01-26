@@ -71,7 +71,7 @@
         
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+//        选择相机
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
