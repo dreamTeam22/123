@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (nonatomic,retain) UILabel *label;
 @property (nonatomic, retain) UIView *view;
-
+//dadfsadfsdfdsfdsf
 
 @end
 
@@ -49,7 +49,7 @@
     
     
     
-    // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 //上拉菜单，选择相册和相机
