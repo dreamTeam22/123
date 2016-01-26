@@ -19,7 +19,6 @@
 @property (nonatomic,strong)UIButton *btn;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (nonatomic,retain) UILabel *label;
-@property (nonatomic, retain) UIView *view;
 //dadfsadfsdfdsfdsf
 @property (nonatomic,retain) UITextField *tf;
 
@@ -38,61 +37,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    加载图片
-    [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:UserID]];
-    
-    
+
     self.view.backgroundColor = [UIColor greenColor];
     self.photoImageView.userInteractionEnabled = YES;
 //    tap点击
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectMenu)];
     [self.photoImageView addGestureRecognizer:tap];
-    
-    
-    
-    
+
 }
 
 //上拉菜单，选择相册和相机
 - (void)selectMenu {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"选择相册" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //        选择相册上传
         
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-//            创建图片选择控制器
-            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-//            允许对选择的图片缩放剪切
-            picker.allowsEditing = YES;
-//            模态动画类型
-            picker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//            设置代理
-            picker.delegate = self;
-            
-            [self presentViewController:picker animated:YES completion:nil];
-            
-            
-        }
-        
-        
+        [self pickImageWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        选择相机
+        //        选择相机拍照上传
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             
-            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            [self pickImageWithType:UIImagePickerControllerSourceTypeCamera];
             
-            picker.allowsEditing = YES;
-            picker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该设备不支持相机功能" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             
-            picker.delegate = self;
-            [self presentViewController:picker animated:YES completion:nil];
-            
+            [alertView show];
             
         }
-        
-        
-        
-        
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
@@ -103,7 +76,21 @@
     [self presentViewController:alertController animated:YES completion:nil];
     
     
+    
+}
 
+- (void)pickImageWithType:(UIImagePickerControllerSourceType)type {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    
+    picker.allowsEditing = YES;
+    picker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    picker.delegate = self;
+    picker.sourceType = type;
+    [self presentViewController:picker animated:YES completion:nil];
+    
+    
+    
 }
 
 #pragma mark 图片选择器的代理
