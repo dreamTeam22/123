@@ -21,6 +21,7 @@
 @property (nonatomic,retain) UILabel *label;
 @property (nonatomic, retain) UIView *view;
 //dadfsadfsdfdsfdsf
+@property (nonatomic,retain) UITextField *tf;
 
 @end
 
