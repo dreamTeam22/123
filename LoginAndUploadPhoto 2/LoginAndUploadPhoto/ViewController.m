@@ -26,6 +26,8 @@
 
 @implementation ViewController
 
+//辉哥最帅
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 //  加载图片
