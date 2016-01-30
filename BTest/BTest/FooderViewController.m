@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+//    customecollection
     ((CustomeCollectionViewLayout *)self.foodCollection.collectionViewLayout).layoutDelegate = self;
     self.foodCollection.delegate = self;
 
