@@ -1,0 +1,23 @@
+//
+//  PrefixHeader.pch
+//  BTest
+//
+//  Created by lanouhn on 16/1/28.
+//  Copyright © 2016年 lanouhn. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#import "AFNetworking.h"
+
+
+
+#endif /* PrefixHeader_pch */
+
+#ifdef DEBUG //调试阶段
+#define PCLog(...) NSLog(__VA_ARGS__)
+#else   //发布阶段
+#define PCLog(...) //NSLog(__VA_ARGS__)
+#endif
